@@ -141,12 +141,18 @@ function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-1">
-            <button className="rounded-lg bg-gradient-to-r from-[#0058be] to-[#2170e4] px-8 py-4 text-sm text-white shadow-[0_10px_15px_-3px_rgba(0,88,190,0.2),0_4px_6px_-4px_rgba(0,88,190,0.2)] transition-transform hover:-translate-y-0.5">
+            <Link
+              href="/explore"
+              className="rounded-lg bg-gradient-to-r from-[#0058be] to-[#2170e4] px-8 py-4 text-sm text-white shadow-[0_10px_15px_-3px_rgba(0,88,190,0.2),0_4px_6px_-4px_rgba(0,88,190,0.2)] transition-transform hover:-translate-y-0.5"
+            >
               Build Your PC
-            </button>
-            <button className="rounded-lg border border-[#c2c6d64d] bg-white/70 px-8 py-4 text-sm text-[#191c1e] transition-colors hover:bg-white">
+            </Link>
+            <Link
+              href="/explore"
+              className="rounded-lg border border-[#c2c6d64d] bg-white/70 px-8 py-4 text-sm text-[#191c1e] transition-colors hover:bg-white"
+            >
               Explore
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -217,9 +223,12 @@ function SpecsSection() {
           Every PCMaster architected system comes with 3 years of on-site support
           and lifetime tech advice.
         </p>
-        <button className="mt-8 w-full rounded-lg bg-white px-6 py-4 text-base text-[#0058be] transition-colors hover:bg-[#eef4ff]">
+        <Link
+          href="/homepage#support"
+          className="mt-8 inline-flex w-full items-center justify-center rounded-lg bg-white px-6 py-4 text-base text-[#0058be] transition-colors hover:bg-[#eef4ff]"
+        >
           Learn More
-        </button>
+        </Link>
       </article>
     </section>
   );

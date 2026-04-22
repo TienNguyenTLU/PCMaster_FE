@@ -4,20 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { CircleUserRound, Search, ShoppingCart } from "lucide-react";
-
-type NavLink = {
-  key: string;
-  label: string;
-  href: string;
-};
-
-const NAV_LINKS: NavLink[] = [
-  { key: "home", label: "Home", href: "/homepage" },
-  { key: "builds", label: "Builds", href: "/homepage#builds" },
-  { key: "explore", label: "Explore", href: "/explore" },
-  { key: "laptops", label: "Laptops & pre-built PC", href: "/homepage#laptops" },
-  { key: "support", label: "Support", href: "/homepage#support" },
-];
+import { MAIN_NAV_LINKS } from "@/components/pcmaster/data/mockData";
 
 type PcMasterTopNavProps = {
   className?: string;
@@ -25,10 +12,14 @@ type PcMasterTopNavProps = {
 
 export function PcMasterTopNav({ className = "" }: PcMasterTopNavProps) {
   const pathname = usePathname();
-  const [selectedLink, setSelectedLink] = useState<string>(NAV_LINKS[0].key);
+  const [selectedLink, setSelectedLink] = useState<string>(MAIN_NAV_LINKS[0].key);
 
   const routeSelectedKey =
-    pathname === "/explore" ? "explore" : pathname === "/homepage" || pathname === "/" ? "home" : undefined;
+    pathname === "/explore" || pathname.startsWith("/explore/") || pathname === "/cart"
+      ? "shop"
+      : pathname === "/homepage" || pathname === "/"
+        ? "home"
+        : undefined;
   const activeKey = routeSelectedKey ?? selectedLink;
 
   return (
@@ -37,15 +28,12 @@ export function PcMasterTopNav({ className = "" }: PcMasterTopNavProps) {
     >
       <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-8 lg:gap-12">
-          <Link
-            className="text-[24px] font-semibold tracking-[-0.05em] text-[#0f172a]"
-            href="/"
-          >
+          <Link className="text-[24px] font-semibold tracking-[-0.05em] text-[#0f172a]" href="/">
             PCMaster
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex">
-            {NAV_LINKS.map((link) => (
+            {MAIN_NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -78,13 +66,13 @@ export function PcMasterTopNav({ className = "" }: PcMasterTopNavProps) {
             />
           </label>
 
-          <button
-            type="button"
+          <Link
+            href="/cart"
             aria-label="Cart"
             className="rounded-lg p-2 text-[#0f172a] transition-colors hover:bg-[#f2f4f6]"
           >
             <ShoppingCart className="h-5 w-5" />
-          </button>
+          </Link>
 
           <button
             type="button"

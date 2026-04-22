@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -42,7 +43,10 @@ export function PcMasterCategoriesSection({ categories }: PcMasterCategoriesSect
         >
           {categories.map((category) => (
             <SwiperSlide key={category.title}>
-              <article className="group h-full rounded-lg bg-white p-6 shadow-[0_20px_40px_rgba(0,26,66,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(0,26,66,0.12)]">
+              <Link
+                href={`/explore?category=${encodeURIComponent(category.title)}`}
+                className="group block h-full rounded-lg bg-white p-6 shadow-[0_20px_40px_rgba(0,26,66,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(0,26,66,0.12)]"
+              >
                 <div className="overflow-hidden rounded-lg bg-[#f2f4f6]">
                   <Image
                     src={category.image}
@@ -66,7 +70,7 @@ export function PcMasterCategoriesSection({ categories }: PcMasterCategoriesSect
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </div>
-              </article>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

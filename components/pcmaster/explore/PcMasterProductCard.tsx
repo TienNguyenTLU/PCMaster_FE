@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { PcMasterAddToCartButton } from "@/components/pcmaster/PcMasterAddToCartButton";
 import { Product } from "@/components/pcmaster/explore/types";
 
 type PcMasterProductCardProps = {
@@ -60,13 +62,10 @@ export function PcMasterProductCard({ product }: PcMasterProductCardProps) {
             >
               Details
             </Link>
-            <button
-              type="button"
+            <PcMasterAddToCartButton
+              product={product}
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#0058be] to-[#2170e4] px-4 py-2 text-sm text-white shadow-[0_4px_10px_rgba(0,88,190,0.25)] transition-transform hover:-translate-y-0.5"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              Add to Cart
-            </button>
+            />
           </div>
         </div>
       </div>

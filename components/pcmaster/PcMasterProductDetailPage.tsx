@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CircleSlash2, ShieldCheck, ShoppingCart, Sparkles, Star, Truck } from "lucide-react";
+import { CircleSlash2, ShieldCheck, Sparkles, Star, Truck } from "lucide-react";
+import { PcMasterAddToCartButton } from "@/components/pcmaster/PcMasterAddToCartButton";
 import { PcMasterFooter } from "@/components/pcmaster/PcMasterFooter";
 import { PcMasterTopNav } from "@/components/pcmaster/PcMasterTopNav";
 import { PRODUCT_CATALOG } from "@/components/pcmaster/data/products";
@@ -133,13 +134,11 @@ export function PcMasterProductDetailPage({ slug }: PcMasterProductDetailPagePro
               <p className="mt-2 text-sm text-[#424754]">Free overnight shipping and professional installation available.</p>
 
               <div className="mt-5 space-y-2">
-                <button
-                  type="button"
+                <PcMasterAddToCartButton
+                  product={product}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-linear-to-r from-[#0058be] to-[#2170e4] px-4 py-4 text-sm text-white shadow-[0_8px_20px_rgba(0,88,190,0.2)] transition-transform hover:-translate-y-0.5"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  Add to Cart
-                </button>
+                  addedLabel="Added to Cart"
+                />
                 <button
                   type="button"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#c2c6d64d] bg-white px-4 py-4 text-sm text-[#191c1e]"

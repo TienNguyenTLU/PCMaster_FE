@@ -199,23 +199,23 @@ function Navigation() {
         <div className="text-xl font-semibold tracking-tight text-slate-900">PCMaster</div>
 
         <nav className="hidden items-center gap-8 text-sm text-slate-600 md:flex">
-          <Link className="transition-colors hover:text-slate-900" href="#">
+          <Link className="transition-colors hover:text-slate-900" href="/homepage#builds">
             PC building
           </Link>
-          <Link className="transition-colors hover:text-slate-900" href="#">
+          <Link className="transition-colors hover:text-slate-900" href="/explore">
             Shop
           </Link>
-          <Link className="transition-colors hover:text-slate-900" href="#">
+          <Link className="transition-colors hover:text-slate-900" href="/homepage#laptops">
             Laptop &amp; Pre-built system
           </Link>
-          <Link className="transition-colors hover:text-slate-900" href="#">
+          <Link className="transition-colors hover:text-slate-900" href="/homepage#support">
             Support
           </Link>
         </nav>
 
         <Link
           className="rounded-lg bg-gradient-to-br from-[#0058BE] to-[#2170E4] px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(0,88,190,0.8)] transition-transform hover:-translate-y-0.5"
-          href="/register"
+          href="/login"
         >
           Login / Signup
         </Link>
@@ -246,12 +246,18 @@ function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <button className="rounded-lg bg-[#0058BE] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_16px_24px_-14px_rgba(0,88,190,0.9)] transition-transform hover:-translate-y-0.5">
+            <Link
+              href="/explore"
+              className="rounded-lg bg-[#0058BE] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_16px_24px_-14px_rgba(0,88,190,0.9)] transition-transform hover:-translate-y-0.5"
+            >
               Configure Your Build
-            </button>
-            <button className="rounded-lg bg-slate-200 px-6 py-3.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-300">
+            </Link>
+            <Link
+              href="/homepage"
+              className="rounded-lg bg-slate-200 px-6 py-3.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-300"
+            >
               View Ecosystem
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -353,7 +359,7 @@ function StorySection() {
         </p>
         <Link
           className="mt-8 inline-flex items-center gap-2 border-b border-slate-300 pb-1 text-sm font-medium text-slate-900 transition-colors hover:border-[#0058BE] hover:text-[#0058BE]"
-          href="#"
+          href="/homepage"
         >
           Learn about our assembly process
           <ArrowRight className="h-4 w-4" />
@@ -481,7 +487,30 @@ function FooterSection() {
             <ul className="mt-5 space-y-3 text-sm text-slate-600">
               {column.links.map((link) => (
                 <li key={link}>
-                  <Link className="transition-colors hover:text-slate-900" href="#">
+                  <Link
+                    className="transition-colors hover:text-slate-900"
+                    href={
+                      link === "Pre-Built Systems"
+                        ? "/homepage#laptops"
+                        : link === "Custom Configurator"
+                          ? "/explore"
+                          : link === "Workstation Class"
+                            ? "/homepage"
+                            : link === "Gaming Series"
+                              ? "/explore"
+                              : link === "Shipping"
+                                ? "/homepage#support"
+                                : link === "Returns"
+                                  ? "/homepage#support"
+                                  : link === "Warranty"
+                                    ? "/homepage#support"
+                                    : link === "Knowledge Base"
+                                      ? "/homepage#support"
+                                      : link === "Careers"
+                                        ? "/register"
+                                        : "/homepage"
+                    }
+                  >
                     {link}
                   </Link>
                 </li>

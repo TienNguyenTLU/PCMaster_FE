@@ -1,19 +1,5 @@
 import { Globe, Share2 } from "lucide-react";
-
-const FOOTER_COLUMNS = [
-  {
-    title: "HARDWARE",
-    links: ["BUILDS", "PROCESSORS", "GRAPHICS"],
-  },
-  {
-    title: "RESOURCES",
-    links: ["SUPPORT", "WARRANTY", "SHIPPING"],
-  },
-  {
-    title: "LEGAL",
-    links: ["PRIVACY POLICY", "TERMS OF SERVICE"],
-  },
-];
+import { FOOTER_COLUMNS } from "@/components/pcmaster/data/mockData";
 
 export function PcMasterFooter() {
   return (
